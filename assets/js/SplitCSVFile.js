@@ -8,8 +8,8 @@ export default class SplitCSVFile{
         // jest lepszy sposób podzielenia na kolumny?
         this.splitFileToRows = this.csvFile.split(/[\r\n]+/gm)
         this.splitFileToRows.forEach(element => {
-            const column = element.split(/,"|"/)
-            this.splitedFile = column.filter(name => {
+            const splitFileToColumns = element.split(/,"|"/)
+            this.splitedFile = splitFileToColumns.filter(name => {
                 return name.length > 0
             })
             const run = new CreateElements(this.splitedFile);
