@@ -8,7 +8,7 @@ export default class CreateElements{
         this.titleEl = this.clonedLiEl.querySelector('.excursions__title');
         this.descrtiptionEl = this.clonedLiEl.querySelector('.excursions__description');
         this.priceAdultEl = this.clonedLiEl.querySelector('.priceForAdult');
-        this.priceKidEl = this.clonedLiEl.querySelector('.priceForKid')
+        this.priceKidEl = this.clonedLiEl.querySelector('.priceForChild')
         const [index,place,descrtiption,priceAdult,priceKid] = this.splitedFile
         this.place = place;
         this.descrtiption = descrtiption;
@@ -23,6 +23,6 @@ export default class CreateElements{
         this.priceKidEl.innerText = this.priceKid
         this.ulEl.appendChild(this.clonedLiEl)
         this.clonedLiEl.classList.remove('excurions__item--prototype');
-
     }
+    
 }

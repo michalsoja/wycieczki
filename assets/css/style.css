@@ -43,6 +43,8 @@ ul {
     margin-bottom: 20px;
     padding-bottom: 20px;
 }
-.excurions__item--prototype{
+.excurions__item--prototype,
+.summary__item--prototype{
     display: none;
 }
+

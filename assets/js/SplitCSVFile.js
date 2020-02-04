@@ -12,6 +12,7 @@ export default class SplitCSVFile{
             this.splitedFile = splitFileToColumns.filter(name => {
                 return name.length > 0
             })
+            // troszkę nie podoba mi się, że nazwa klasy wskazuje ze rozdzielam tutaj pliki,a jednoczesnie wpisałem tutaj klase która tworzy elementy. Moze to troszke narobic zamieszania w kodzie. Co o tym myslisz?
             const run = new CreateElements(this.splitedFile);
             run.createOffer();
         })
