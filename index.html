@@ -52,7 +52,7 @@
         <form class="panel__order order" novalidate>
           <div class="order__total-price">
             Razem:
-            <span class="order__total-price-value">199PLN</span>
+            <p><span data-price='0' class="order__total-price-value"></span>PLN</P>
           </div>
           <div class="order__field">
             <label class="order__field-name">
@@ -76,8 +76,8 @@
           <li class="summary__item summary__item--prototype">
             <h3 class="summary__title">
               <span class="summary__name">Ogrodzieniec</span>
-              <strong class="summay__total-price">199PLN</strong>
-              <a href="" class="summary__btn-remove" title="usuń">X</a>
+              <strong data-price="" class="summay__total-price"></strong>
+              <button class="summary__btn-remove" title="usuń">X</button>
             </h3>
             <p class="summary__prices">dorośli: 1 x 99PLN, dzieci: 2 x 50PLN</p>
           </li>

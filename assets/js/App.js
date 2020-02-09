@@ -1,28 +1,31 @@
-import ReadCSVFile from './ReadCSVFile.js'
+import CSVFileReader from './CSVFileReader.js'
 import ValidationCSVFile from './ValidationCSVFile.js'
 import ValidationOffer from './ValidationOffer.js'
 import SummaryElement from './SummaryElement.js'
+import FormSender from './FormSender.js'
 
 export default class App{
-    constructor(inputCSVEl,fullNameForm,ulExcursionEl,ulSummaryEl){
+    constructor(inputCSVEl,fullNameForm,ulExcursionEl,buttonEl,form){
         this.fullNameForm = fullNameForm
         this.inputCSVEl = inputCSVEl
         this.ulExcursionEl = ulExcursionEl
-        this.ulSummaryEl = ulSummaryEl;
+        this.buttonEl = buttonEl;
+        this.form = form
     }
 
     initialEvent(){
         // ostatnio jak mi pokazales przekazywanie eventu za pomoca funckji strzałkowej to przepisuja za kazdym razem bezmyslnie ta formulke "event => this.funkcja(event)". Sa sytuacje kiedy nie bedzie to pożądane?
-        this.inputCSVEl.addEventListener('change', event => this.showOfferElements(event))
-        this.ulExcursionEl.addEventListener('submit', event => this.setCart(event))
-        this.ulSummaryEl.addEventListener('click', event => this.deleteSummaryElement(event))
+        this.inputCSVEl.addEventListener('change', event => this.showOfferElements(event));
+        this.ulExcursionEl.addEventListener('submit', event => this.setCart(event));
+        this.buttonEl.addEventListener('click', event => this.deleteSummaryElement(event));
+        this.form.addEventListener('submit', event => this.sendForm(event));
        
     }
 
     showOfferElements(){
         const checkIfValueIsCSVFile = new ValidationCSVFile(this.inputCSVEl)
         checkIfValueIsCSVFile.run();
-        const run = new ReadCSVFile(this.inputCSVEl)
+        const run = new CSVFileReader(this.inputCSVEl)
         run.readFile();
     }
 
@@ -38,9 +41,20 @@ export default class App{
     }
 
     deleteSummaryElement(event){
-        //spytaj czemu nie działał preventDefault gdy dales nasluchiwanie na przycisk od usuwania elementu, pomimo tego ze byl w DOM od załadowania strony
-        event.preventDefault();
-        console.log(this.ulSummaryEl)
-        console.log(event.target)
+        this.summaryTotalPriceEl = event.target.parentElement.querySelector('.summay__total-price');
+        this.orderTotalPriceEl = document.querySelector('.order__total-price-value')
+        this.priceAfterDeduction = Number(this.orderTotalPriceEl.dataset.price) - Number(this.summaryTotalPriceEl.dataset.price)
+        this.orderTotalPriceEl.dataset.price = this.priceAfterDeduction
+        this.orderTotalPriceEl.innerText = this.priceAfterDeduction
+        
+        if(event.target.tagName == 'BUTTON'){
+            event.target.parentElement.parentElement.remove()
+        } 
     }
+    sendForm(event){
+        event.preventDefault();
+        const sendOffer = new FormSender(this.form)
+        sendOffer.run();
+    }
+
 }

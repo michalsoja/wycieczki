@@ -1,3 +1,5 @@
+import SummaryTotalPrice from "./SummaryTotalPrice.js";
+
 export default class SummaryElement {
     constructor(offerEl,ammountOfAdults,ammountOfChildrens) {
         this.ulEl = document.querySelector('.panel__summary')
@@ -15,9 +17,13 @@ export default class SummaryElement {
 
     run() {
        this.titleEl.innerText = this.title
+       const calcSummaryPrice = new SummaryTotalPrice(this.ammountOfAdults,this.ammountOfChildrens,this.priceAdult,this.priceChild,this.clonedSummaryEl)
+       calcSummaryPrice.run();
        this.pricesEl.innerText = `dorośli: ${this.ammountOfAdults} x ${this.priceAdult}PLN, dzieci: ${this.ammountOfChildrens} x ${this.priceChild}PLN`
        this.ulEl.appendChild(this.clonedSummaryEl);
        this.clonedSummaryEl.classList.remove('summary__item--prototype');
+       
+
     }
 
 }

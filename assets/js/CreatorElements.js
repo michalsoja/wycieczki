@@ -1,4 +1,4 @@
-export default class CreateElements{
+export default class CreatorElements{
     constructor(splitedFile){
         // bardzo duzo linijek. Moze lepsze wyjscie z pobraniem elementow?
         this.ulEl = document.querySelector('.panel__excurions');

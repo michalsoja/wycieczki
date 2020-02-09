@@ -1,6 +1,6 @@
-import CreateElements from './CreateElements.js'
+import CreatorElements from './CreatorElements.js'
 
-export default class SplitCSVFile{
+export default class SpliterCSVFile{
     constructor(csvFile){
         this.csvFile = csvFile
     }
@@ -13,7 +13,7 @@ export default class SplitCSVFile{
                 return name.length > 0
             })
             // troszkę nie podoba mi się, że nazwa klasy wskazuje ze rozdzielam tutaj pliki,a jednoczesnie wpisałem tutaj klase która tworzy elementy. Moze to troszke narobic zamieszania w kodzie. Co o tym myslisz?
-            const run = new CreateElements(this.splitedFile);
+            const run = new CreatorElements(this.splitedFile);
             run.createOffer();
         })
         
