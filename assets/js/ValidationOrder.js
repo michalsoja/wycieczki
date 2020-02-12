@@ -18,8 +18,6 @@ export default class ValidationOrder {
         if (pattern.test(this.nameInput.value)) {
             return true
         }
-
-        alert('Proszę podać poprawnę imię.')
         return false
 
     }
@@ -28,8 +26,6 @@ export default class ValidationOrder {
         if (this.emailInput.value.includes('@')) {
             return true
         }
-
-        alert('Proszę podać poprawny adres email.')
         return false
 
     }
@@ -39,8 +35,6 @@ export default class ValidationOrder {
         if (this.ulSummaryEl.children.length > 1) {
             return true
         }
-
-        alert('Proszę dodać interesującą Państwa ofertę lub dodać plik CSV')
         return false
 
     }

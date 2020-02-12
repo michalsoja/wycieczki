@@ -25,6 +25,11 @@ export default class App{
     showOfferElements(){
         const checkIfValueIsCSVFile = new ValidationCSVFile(this.inputCSVEl)
         checkIfValueIsCSVFile.run();
+        if(checkIfValueIsCSVFile.run() == false){
+            alert('Proszę podać plik CSV')
+            return
+        }
+        
         const run = new CSVFileReader(this.inputCSVEl)
         run.readFile();
     }
@@ -36,6 +41,10 @@ export default class App{
         const ammountOfChildrens = offerEl.querySelector('input[name="children"]').value;
         const checkIfValueIsANumber = new ValidationOffer(ammountOfAdults,ammountOfChildrens)
         checkIfValueIsANumber.run();
+        if(checkIfValueIsANumber.run() == false){
+            alert('Proszę uzupełnić poprawnie dane w ofercie wycieczki')
+            return
+        }
         const createSummaryEl = new SummaryElement(offerEl,ammountOfAdults,ammountOfChildrens)
         createSummaryEl.run();
     }
@@ -48,6 +57,7 @@ export default class App{
         this.orderTotalPriceEl.innerText = this.priceAfterDeduction
         
         if(event.target.tagName == 'BUTTON'){
+            //parentElement.parentElement, na szybkiego rozwiązanie do poprawienia
             event.target.parentElement.parentElement.remove()
         } 
     }

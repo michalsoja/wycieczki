@@ -16,7 +16,7 @@ export default class CreatorElements{
         this.priceKid = priceKid;
     }
 
-    createOffer(){
+    run(){
         this.titleEl.innerText = this.place
         this.descrtiptionEl.innerText = this.descrtiption
         this.priceAdultEl.innerText = this.priceAdult
@@ -24,5 +24,5 @@ export default class CreatorElements{
         this.ulEl.appendChild(this.clonedLiEl)
         this.clonedLiEl.classList.remove('excurions__item--prototype');
     }
-    
+   
 }

@@ -4,8 +4,8 @@ export default class OrderTotalPrice {
         this.totalPrice = totalPrice;
     }
     run(){
-        this.kupa = Number(this.orderPriceEl.dataset.price) + Number(this.totalPrice);
-        this.orderPriceEl.innerText = this.kupa
-        this.orderPriceEl.dataset.price = this.kupa
+        this.price = Number(this.orderPriceEl.dataset.price) + Number(this.totalPrice);
+        this.orderPriceEl.innerText = this.price
+        this.orderPriceEl.dataset.price = this.price
     }
 }
